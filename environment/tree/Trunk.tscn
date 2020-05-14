@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://environment/tree/trunk_mid.png" type="Texture" id=1]
+[ext_resource path="res://environment/tree/Axe.tscn" type="PackedScene" id=2]
+[ext_resource path="res://environment/tree/Trunk.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fly_left"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -1000, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fly_right"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1000, 0 ) ]
+}
+
+[node name="Trunk" type="Sprite"]
+scale = Vector2( 2, 2 )
+z_index = 1
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+anims/fly_left = SubResource( 1 )
+anims/fly_right = SubResource( 2 )
+
+[node name="LeftAxe" parent="." instance=ExtResource( 2 )]
+
+[node name="RightAxe" parent="." instance=ExtResource( 2 )]
+position = Vector2( 86.2372, 0.849925 )
+flip_h = true
