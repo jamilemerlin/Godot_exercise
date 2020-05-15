@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://environment/Projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player/ProjectilePlayer.gd" type="Script" id=2]
+
+[node name="ProjectilePlayer" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+[connection signal="body_entered" from="." to="." method="_on_ProjectilePlayer_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
