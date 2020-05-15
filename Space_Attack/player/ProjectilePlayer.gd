@@ -1,6 +1,6 @@
 extends Area2D
 
-export var Damage = 25
+export var Damage = 50
 export var Speed = 1500
 onready var UI_CONTROL = get_node(@"/root/Game/CanvasLayer/Control")
 
@@ -19,5 +19,5 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_ProjectilePlayer_body_entered(body):
 	if "Enemy" in body.name:
 		UI_CONTROL.add_score(10)
-		body.queue_free()
+		body.add_damage(Damage)
 		queue_free()

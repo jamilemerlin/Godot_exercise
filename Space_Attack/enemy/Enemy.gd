@@ -15,8 +15,11 @@ func _ready():
 
 func add_damage(damage):
 	health -= damage
-	if health <= 0:
+	if health <= 0 and not dead:
 		dead = true
+		$AudioExplosion.play()
+		hide()
+		# queue_free()
 
 func _spawn_projectile(spawn_position):
 	var new_projectile = BULLET.instance()
@@ -33,6 +36,12 @@ func _physics_process(delta):
 
 func _on_Timer_timeout():
 	$Timer.start()
-	_spawn_projectile($LeftGun.global_position)
-	_spawn_projectile($RightGun.global_position)
+	if not dead:
+		_spawn_projectile($LeftGun.global_position)
+		_spawn_projectile($RightGun.global_position)
+	# $AudioLaser.play()
 
+
+
+func _on_AudioExplosion_finished():
+	queue_free()

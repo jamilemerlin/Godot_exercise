@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://enemy/enemyRed5.png" type="Texture" id=1]
 [ext_resource path="res://enemy/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://audio/explosion.wav" type="AudioStream" id=3]
+[ext_resource path="res://audio/laser.wav" type="AudioStream" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 47.0952
@@ -28,4 +30,11 @@ position = Vector2( -33.2035, -17.1288 )
 
 [node name="RightGun" type="Position2D" parent="."]
 position = Vector2( 33.204, -17.129 )
+
+[node name="AudioLaser" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="AudioExplosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="finished" from="AudioExplosion" to="." method="_on_AudioExplosion_finished"]

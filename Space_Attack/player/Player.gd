@@ -21,6 +21,7 @@ func _physics_process(delta):
 		
 func _process(delta):
 	if Input.is_action_pressed("shoot") and $Timer.is_stopped():
+		$AudioLaser.play()
 		$Timer.start()
 		_spawn_projectile($LeftGun.global_position)
 		_spawn_projectile($RightGun.global_position)
