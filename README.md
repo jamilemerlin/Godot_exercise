@@ -1,8 +1,10 @@
-# Godot Exercise
+# Godot Exercises
 
-Tree Puncher - first game made with Godot
+games made during the course at Udemy by Guilherme Oliveira.
 
-game made during the course at Udemy by Guilherme Oliveira.
+
+- Tree Puncher 
+- Space Attack
 
 
 ## Requirements
